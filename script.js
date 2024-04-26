@@ -1,7 +1,7 @@
 // Create variables for score
 
-let computerScore;
-let playerScore;
+let computerScore = 0;
+let playerScore = 0;
 
 // Greets the user with their name
 function greeting() {
@@ -45,57 +45,65 @@ function createComputerSignal() {
 }
 
 // Temporary log for ease of testing
-console.log(createComputerSignal());
+// console.log(createComputerSignal());
 
 function getPlayerSignal() {
   let playerPrompt = prompt('Please choose "Rock", "Paper", or "Scissors"');
   let playerSignal;
 
-  switch (playerPrompt) {
-    case "rock" || "Rock":
+  switch (playerPrompt.toLowerCase()) {
+    case "rock":
       playerSignal = "Rock";
       return playerSignal;
 
-    case "paper" || "Paper":
+    case "paper":
       playerSignal = "Paper";
       return playerSignal;
 
-    case "scissors" || "Scissors":
+    case "scissors":
       playerSignal = "Scissors";
       return playerSignal;
+
+    default:
+      console.log("Invalid input");
   }
 }
 
 // Temporary log for ease of testing
-console.log(getPlayerSignal());
+// console.log(getPlayerSignal());
 
 // Evaluate who wins the point & create it
 function modifyScore(computer, player) {
-  switch ((computer, player)) {
-    case computer === "Rock" && player === "Scissors":
-      computerScore++;
-      console.log(
-        `The computer chose ${computer} and you chose ${player}. ${computer} beats ${player}, the computer has been awarded a point`
-      );
-      break;
-
-    case computer === "Scissors" && player === "Paper":
-      computerScore++;
-      console.log(
-        `The computer chose ${computer} and you chose ${player}. ${computer} beats ${player}, the computer has been awarded a point`
-      );
-      break;
-
-    case computer === "Paper" && player === "Rock":
-      computerScore++;
-      console.log(
-        `The computer chose ${computer} and you chose ${player}. ${computer} beats ${player}, the computer has been awarded a point`
-      );
-      break;
-
-    default:
-      `The computer chose ${computer} and you chose ${player}. ${computer} loses to ${player}, the player has been awarded a point`;
+  if (computer === "Rock" && player === "Scissors") {
+    computerScore++;
+    console.log(
+      `The computer chose ${computer} and you chose ${player}. ${computer} beats ${player}, the computer has been awarded a point.`
+    );
+  } else if (computer === "Scissors" && player === "Paper") {
+    computerScore++;
+    console.log(
+      `The computer chose ${computer} and you chose ${player}. ${computer} beats ${player}, the computer has been awarded a point.`
+    );
+  } else if (computer === "Paper" && player === "Rock") {
+    computerScore++;
+    console.log(
+      `The computer chose ${computer} and you chose ${player}. ${computer} beats ${player}, the computer has been awarded a point.`
+    );
+  } else if (computer === player) {
+    console.log(
+      `The computer chose ${computer} and you chose ${player}. ${computer} beats ${player}, no points were awarded.`
+    );
+    modifyScore(createComputerSignal(), getPlayerSignal());
+  } else {
+    playerScore++;
+    console.log(
+      `The computer chose ${computer} and you chose ${player}. ${computer} loses to ${player}, the player has been awarded a point. Choose again.`
+    );
   }
 }
 
-modifyScore(createComputerSignal, getPlayerSignal);
+modifyScore(createComputerSignal(), getPlayerSignal());
+
+console.log(
+  `Computer score is ${computerScore} and player score is ${playerScore}. First to 5 wins.`
+);
