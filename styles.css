@@ -1,5 +1,6 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
 }
 
 ul {
@@ -11,4 +12,45 @@ ul {
 
 li {
   margin: 10px 0px;
+}
+
+button {
+  width: 75px;
+  height: 75px;
+  margin: 15px;
+  padding: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 100%;
+  background-color: #dedede;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 0;
+}
+
+#rock:hover {
+  cursor: pointer;
+  font-size: 2rem;
+  text-align: center;
+  background-color: #b5ffb5;
+}
+
+#paper:hover {
+  cursor: pointer;
+  font-size: 2rem;
+  text-align: center;
+  background-color: #b5ffb5;
+}
+
+#scissors:hover {
+  cursor: pointer;
+  font-size: 2rem;
+  text-align: center;
+  background-color: #b5ffb5;
 }
